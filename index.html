@@ -6,35 +6,28 @@
  <meta name="viewport" content="width=device-width, initial-scale=1.0">
  <title>Calculate Your Age</title>
  <link rel="stylesheet" href="/css/main.min.css">
+<link rel="stylesheet" href="/Persian-Jalali-Calendar-Data-Picker-Plugin-With-jQuery-kamaDatepicker/dist/kamadatepicker.min.css">
 </head>
 
 <body>
  <section class="body-bg">
   <section class="container-bg">
    <h1 class="title">Calculate Your Age</h1>
-
+<h5 >اکنون</h5>
+<div id="dateNow"></div>
    <h2> Enter Your Age:</h2>
    <div class="container">
     <div class="inputs">
-     <span class="year-input">
-      <h3>Year</h3>
-      <input id="inputYear" type="number" >
-     </span>
-     <span class="month-input">
-      <h3>Month</h3>
-      <input id="inputMonth" type="number" min="1">
-     </span>
-     <span class="day-input">
-      <h3>Day</h3>
-      <input id="inputDay" type="number" min="1">
-     </span>
+
+    <input type="text" id="jalaliInput" >
     </div>
+
     <div class="calculations">
      <span class="divison-line">
       <img src="/source/line.svg" alt="division-line">
      </span>
-     <button id="calculationButton" onclick="calculateAge()">
-      <img src="/node_modules/bootstrap-icons/icons/arrow-down-circle.svg" alt="calculate">
+     <button id="calculationButton">
+↓
      </button>
 
     </div>
@@ -42,12 +35,32 @@
      <p id="age-is"></p>
     </div>
    </div>
-   <span class="credit">Design and development by <br>Aref Ramzanzad</span>
+   <span class="credit">Design and development by <br>Aref Ramzanzad </span>
   </section>
  </section>
 
- <script src="/app.js"></script>
- <script src="/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+<script src="//code.jquery.com/jquery.min.js"></script>
+<script src="/Persian-Jalali-Calendar-Data-Picker-Plugin-With-jQuery-kamaDatepicker/dist/kamadatepicker.min.js"></script>
+ <script src="/jalaliapp.js"></script>
+
+ <script>
+   kamaDatepicker('jalaliInput', {           
+       placeholder: "تاریخ تولد...",
+
+  nextButtonIcon: "",
+      
+  previousButtonIcon: "",
+      
+      futureYearsCount:1,
+
+      markToday: true,
+
+
+
+});
+ </script>
+
 </body>
 
 </html>

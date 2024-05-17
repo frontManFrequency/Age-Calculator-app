@@ -1,3 +1,5 @@
+
+//-----------------------------
 let yearInput = document.getElementById("inputYear");
 let monthInput = document.getElementById("inputMonth");
 let dayInput = document.getElementById("inputDay");
@@ -82,8 +84,7 @@ function calculateAge() {
     selectedMonth === currentMonth &&
     selectedYear === currentYear
   ) {
-    result.innerHTML =
-      "Congrats! You just born Today :)";
+    result.innerHTML = "Congrats! You just born Today :)";
   } else {
     result.innerHTML =
       "You are " +
