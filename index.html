@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Calculate Your Age</title>
+ <link rel="stylesheet" href="/css/main.min.css">
+</head>
+
+<body>
+ <section class="body-bg">
+  <section class="container-bg">
+   <h1 class="title">Calculate Your Age</h1>
+
+   <h2> Enter Your Age:</h2>
+   <div class="container">
+    <div class="inputs">
+     <span class="year-input">
+      <h3>Year</h3>
+      <input id="inputYear" type="number" >
+     </span>
+     <span class="month-input">
+      <h3>Month</h3>
+      <input id="inputMonth" type="number" min="1">
+     </span>
+     <span class="day-input">
+      <h3>Day</h3>
+      <input id="inputDay" type="number" min="1">
+     </span>
+    </div>
+    <div class="calculations">
+     <span class="divison-line">
+      <img src="/source/line.svg" alt="division-line">
+     </span>
+     <button id="calculationButton" onclick="calculateAge()">
+      <img src="/node_modules/bootstrap-icons/icons/arrow-down-circle.svg" alt="calculate">
+     </button>
+
+    </div>
+    <div class="outputs">
+     <p id="age-is"></p>
+    </div>
+   </div>
+   <span class="credit">Design and development by <br>Aref Ramzanzad</span>
+  </section>
+ </section>
+
+ <script src="/app.js"></script>
+ <script src="/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
