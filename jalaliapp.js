@@ -16977,87 +16977,28 @@ moment = (() => {
 
 
 //--------------------------------------------------
-import pd from "persian-date";
+    // First, make sure to include moment.js and moment-jalaali.js in your HTML file
 
-let date = moment();
-date = date.format("jYYYY/jMM/jD");
-document.getElementById("dateNow").innerHTML = date;
-
-
-
-const [year, month, day] = date.split("/");
-const currentYear = parseInt(year);
-const currentMonth = parseInt(month);
-const currentDay = parseInt(day);
-const monthsWith31Days = new Set([01, 03, 05, 07, 08, 10, 12]);
-  const pd = require("persian-date");
-function getDaysInMonth(y, m) {
- // const jalalDate = moment([y, m - 1]); // Adjust month to be zero-based
-  // return jalaliDate.endOf("jMonth").jDate();
-
-    const date = pd.toLocale("fa").toJalali(y, m + 1, 1);
-
-    const lastDay = date.endOf('month');
-
-
-    return lastDay.date();
+// This function calculates the age and sets it to the #ageIs element
+function calculateAge() {
+  var input = document.getElementById('jalaliInput').value;
+  var birthdate = moment(input, 'jYYYY/jMM/jDD');
+  var today = moment();
+  
+  // Calculate years, months, and days
+  var years = today.diff(birthdate, 'years');
+  birthdate.add(years, 'years');
+  var months = today.diff(birthdate, 'months');
+  birthdate.add(months, 'months');
+  var days = today.diff(birthdate, 'days');
+  
+  // Set the calculated age to the #ageIs element
+  document.getElementById('ageIs').innerHTML = 'سن شما:' + years + ' سال ' + months + ' ماه  ' + days + '  روز';
 }
-let result = document.getElementById("age-is");
-let calculationButton = document.getElementById("calculationButton");
-calculationButton.addEventListener("click", (event) => {
-  let dateInput = document.getElementById("jalaliInput").value;
-  const [uyear, umonth, uday] = dateInput.split("/");
-let selectedYear = parseInt(uyear);
-let selectedMonth = parseInt(umonth);
-let selectedDay = parseInt(uday);
-  //---------------------------------------
-   let yearOutput, monthOutput, dayOutput;
 
-   yearOutput = currentYear - selectedYear;
-   if (currentMonth >= selectedMonth) {
-     monthOutput = currentMonth - selectedMonth;
-   } else {
-     yearOutput--;
-     monthOutput = 12 + currentMonth - selectedMonth;
-   }
-   if (currentDay >= selectedDay) {
-     dayOutput = currentDay - selectedDay;
-   }
-   else {monthOutput--; dayOutput = getDaysInMonth(selectedYear, selectedMonth) + currentDay - selectedDay;}
-   if (monthOutput < 0) {
-     monthOutput = 11;
-     yearOutput--;
-   }
-   if (selectedYear > currentYear) {
-     result.innerHTML = "Please enter an appropriate date";
-   } else if (selectedMonth > 12) {
-     result.innerHTML = "Please enter an appropriate date";
-   }
-   else if (selectedDay > getDaysInMonth(selectedYear, selectedMonth)) { result.innerHTML = "Please enter an appropriate date"; }
-   else if (selectedYear === currentYear && selectedMonth > currentMonth) {
-     result.innerHTML = "Please enter an appropriate date";
-   } else if (
-     selectedYear === currentYear &&
-     selectedMonth === currentMonth &&
-     selectedDay > currentDay
-   ) {
-     result.innerHTML = "Please enter an appropriate date";
-   } else if (
-     selectedDay === currentDay &&
-     selectedMonth === currentMonth &&
-     selectedYear === currentYear
-   ) {
-     result.innerHTML = "Congrats! You just born Today :)";
-   } else {
-     result.innerHTML =
-       "You are " +
-       yearOutput +
-       " years and, " +
-       monthOutput +
-       " months and, " +
-       dayOutput +
-       " days old";
-   }
+// Add event listener to the button
+document
+  .getElementById("calculationButton")
+  .addEventListener("click", calculateAge);
 
-});
-console.log(getDaysInMonth(1402, 5))
+  
